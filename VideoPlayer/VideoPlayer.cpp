@@ -14,10 +14,21 @@ extern "C"
 
 int main()
 {
-	av_register_all();
-	if (SDL_Init(SDL_INIT_VIDEO)) {
-		printf("Could not initialize SDL - %s\n", SDL_GetError());
-		return -1;
-	}
-    std::cout << "Hello World!\n";
+	AVFormatContext	*pFormatCtx;
+	int				i, videoindex;
+	AVCodecContext	*pCodecCtx;
+	AVCodec			*pCodec;
+	AVFrame	*pFrame,*pFrameYUV;
+	unsigned char *out_buffer;
+	AVPacket *packet;
+	int y_size;
+	int ret, got_picture;
+	struct SwsContext* img_convert_ctx;
+	char filepath[]="bigbuckbunny_480x272.h265";
+	//SDL----------------------------
+	int screen_w = 0, screen_h = 0;
+	SDL_Window* screen;
+	SDL_Renderer* sdlRenderer;
+	SDL_Texture* sdlTexture;
+	SDL_Rect sdlRect;
 }
